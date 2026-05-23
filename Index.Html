@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DMV Technologies | Premium Tech Academy</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Manrope',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#040816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    .hero-bg{
+      background:
+      radial-gradient(circle at top left, rgba(56,189,248,.18), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(16,185,129,.15), transparent 30%),
+      linear-gradient(to bottom,#040816,#08111f,#040816);
+    }
+
+    .grid-overlay{
+      background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:40px 40px;
+    }
+
+    .glass{
+      background:rgba(255,255,255,.05);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .premium-card{
+      position:relative;
+      overflow:hidden;
+      transition:all .45s ease;
+    }
+
+    .premium-card:hover{
+      transform:translateY(-10px);
+      box-shadow:
+      0 20px 60px rgba(0,0,0,.45),
+      0 0 40px rgba(56,189,248,.15);
+    }
+
+    .premium-card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      padding:1px;
+      border-radius:inherit;
+      background:linear-gradient(
+      135deg,
+      rgba(56,189,248,.4),
+      rgba(16,185,129,.3),
+      transparent
+      );
+
+      -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      pointer-events:none;
+    }
+
+    .gradient-text{
+      background:linear-gradient(to right,#38bdf8,#34d399);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-title{
+      line-height:1.05;
+    }
+
+    .glow-btn{
+      box-shadow:0 0 35px rgba(56,189,248,.35);
+    }
+
+    .floating{
+      animation:float 6s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-18px);
+      }
+    }
+
+    .blur-ball{
+      position:absolute;
+      border-radius:9999px;
+      filter:blur(120px);
+      opacity:.35;
+      z-index:0;
+    }
+
+    .section-title{
+      letter-spacing:-2px;
+    }
+
+    .tag{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:14px;
+    }
+
+    .input{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:16px 18px;
+      outline:none;
+      color:white;
+      width:100%;
+    }
+
+    .input:focus{
+      border-color:#38bdf8;
+    }
+
+    .stat-box{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- BLUR EFFECTS -->
+<div class="blur-ball bg-cyan-500 w-[400px] h-[400px] top-[-100px] left-[-100px]"></div>
+<div class="blur-ball bg-emerald-500 w-[350px] h-[350px] bottom-[-100px] right-[-100px]"></div>
+
+<!-- NAVBAR -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#040816]/80 border-b border-white/5">
+
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
+    <!-- LOGO -->
+    <div class="flex items-center gap-4">
+
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-cyan-400 to-emerald-400 flex items-center justify-center text-black font-extrabold">
+        DMV
+      </div>
+
+      <div>
+        <h1 class="font-extrabold text-xl">
+          DMV Technologies
+        </h1>
+
+        <p class="text-slate-400 text-xs">
+          Cloud • DevOps • Data Analytics
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MENU -->
+    <nav class="hidden lg:flex items-center gap-10 text-slate-300 text-sm">
+
+      <a href="#tracks" class="hover:text-cyan-400 transition">
+        Programs
+      </a>
+
+      <a href="#technologies" class="hover:text-cyan-400 transition">
+        Technologies
+      </a>
+
+      <a href="#success" class="hover:text-cyan-400 transition">
+        Success Stories
+      </a>
+
+      <a href="#contact" class="hover:text-cyan-400 transition">
+        Contact
+      </a>
+
+    </nav>
+
+    <!-- BUTTON -->
+    <a href="#contact"
+      class="hidden md:flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-emerald-400 text-black px-6 py-3 rounded-2xl font-bold hover:scale-105 transition">
+
+      <i data-lucide="calendar-days" class="w-4 h-4"></i>
+      Free Career Session
+
+    </a>
+
+  </div>
+
+</header>
+
+<!-- HERO -->
+<section class="hero-bg grid-overlay min-h-screen flex items-center relative overflow-hidden">
+
+  <div class="max-w-7xl mx-auto px-6 pt-36 grid lg:grid-cols-2 gap-20 items-center relative z-10">
+
+    <!-- LEFT -->
+    <div>
+
+      <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full glass text-cyan-300 text-sm mb-8">
+
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        India's Premium Placement-Focused Academy
+
+      </div>
+
+      <h1 class="hero-title text-5xl md:text-7xl font-extrabold">
+
+        Master
+        <span class="gradient-text">Cloud, DevOps & Data Analytics</span>
+        With Real-Time Projects.
+
+      </h1>
+
+      <p class="text-slate-300 text-lg mt-8 leading-relaxed max-w-2xl">
+
+        DMV Technologies helps students and professionals build
+        high-paying tech careers through hands-on training,
+        live projects, expert mentorship, and dedicated placement support.
+
+      </p>
+
+      <!-- BUTTONS -->
+      <div class="flex flex-wrap gap-5 mt-10">
+
+        <a href="#tracks"
+          class="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black px-8 py-4 rounded-2xl font-extrabold glow-btn hover:scale-105 transition">
+
+          Explore Programs
+
+        </a>
+
+        <a href="#success"
+          class="glass px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition">
+
+          Success Stories
+
+        </a>
+
+      </div>
+
+      <!-- STATS -->
+      <div class="grid grid-cols-3 gap-5 mt-16">
+
+        <div class="stat-box rounded-3xl p-5 text-center">
+
+          <h2 class="text-4xl font-extrabold gradient-text">
+            10K+
+          </h2>
+
+          <p class="text-slate-400 text-sm mt-2">
+            Students Trained
+          </p>
+
+        </div>
+
+        <div class="stat-box rounded-3xl p-5 text-center">
+
+          <h2 class="text-4xl font-extrabold gradient-text">
+            92%
+          </h2>
+
+          <p class="text-slate-400 text-sm mt-2">
+            Placement Rate
+          </p>
+
+        </div>
+
+        <div class="stat-box rounded-3xl p-5 text-center">
+
+          <h2 class="text-4xl font-extrabold gradient-text">
+            150+
+          </h2>
+
+          <p class="text-slate-400 text-sm mt-2">
+            Hiring Partners
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="floating">
+
+      <div class="premium-card glass rounded-[36px] p-8">
+
+        <!-- TOP -->
+        <div class="flex items-center justify-between mb-8">
+
+          <div>
+
+            <h3 class="text-2xl font-bold">
+              Career Dashboard
+            </h3>
+
+            <p class="text-slate-400 text-sm mt-1">
+              Live Placement Analytics
+            </p>
+
+          </div>
+
+          <div class="bg-emerald-400/15 text-emerald-300 px-4 py-2 rounded-full text-sm">
+            LIVE
+          </div>
+
+        </div>
+
+        <!-- GRID -->
+        <div class="grid grid-cols-2 gap-5">
+
+          <!-- CARD -->
+          <div class="premium-card glass rounded-3xl p-6">
+
+            <div class="w-14 h-14 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+              <i data-lucide="cloud" class="text-cyan-400"></i>
+            </div>
+
+            <h2 class="text-3xl font-bold mt-6">
+              AWS
+            </h2>
+
+            <p class="text-slate-400 text-sm mt-2">
+              Cloud Infrastructure
+            </p>
+
+          </div>
+
+          <!-- CARD -->
+          <div class="premium-card glass rounded-3xl p-6">
+
+            <div class="w-14 h-14 rounded-2xl bg-emerald-400/10 flex items-center justify-center">
+              <i data-lucide="database" class="text-emerald-400"></i>
+            </div>
+
+            <h2 class="text-3xl font-bold mt-6">
+              SQL
+            </h2>
+
+            <p class="text-slate-400 text-sm mt-2">
+              Data Analytics
+            </p>
+
+          </div>
+
+          <!-- GRAPH -->
+          <div class="premium-card glass rounded-3xl p-6 col-span-2">
+
+            <div class="flex items-center justify-between">
+
+              <h3 class="font-bold">
+                Placement Growth
+              </h3>
+
+              <i data-lucide="trending-up" class="text-cyan-400"></i>
+
+            </div>
+
+            <div class="flex items-end gap-4 mt-10 h-40">
+
+              <div class="bg-cyan-400 rounded-t-2xl w-14 h-20"></div>
+              <div class="bg-cyan-400 rounded-t-2xl w-14 h-28"></div>
+              <div class="bg-cyan-400 rounded-t-2xl w-14 h-24"></div>
+              <div class="bg-emerald-400 rounded-t-2xl w-14 h-40"></div>
+              <div class="bg-cyan-400 rounded-t-2xl w-14 h-32"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROGRAMS -->
+<section id="tracks" class="py-28 bg-[#07101d]">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-20">
+
+      <h2 class="section-title text-5xl md:text-6xl font-extrabold">
+
+        Premium Career
+        <span class="gradient-text">Programs</span>
+
+      </h2>
+
+      <p class="text-slate-400 mt-6 max-w-3xl mx-auto text-lg">
+
+        Industry-ready programs designed to help you crack high-paying cloud and analytics jobs.
+
+      </p>
+
+    </div>
+
+    <!-- GRID -->
+    <div class="grid lg:grid-cols-2 gap-10">
+
+      <!-- DEVOPS -->
+      <div class="premium-card glass rounded-[36px] p-10">
+
+        <div class="flex items-center justify-between">
+
+          <div>
+
+            <h3 class="text-3xl font-extrabold">
+              Multi-Cloud DevOps
+            </h3>
+
+            <p class="text-slate-400 mt-3">
+              Become a cloud-native DevOps Engineer.
+            </p>
+
+          </div>
+
+          <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 flex items-center justify-center">
+
+            <i data-lucide="server-cog" class="text-cyan-400 w-8 h-8"></i>
+
+          </div>
+
+        </div>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+
+          <span class="tag">AWS</span>
+          <span class="tag">Azure</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Jenkins</span>
+
+        </div>
+
+        <div class="space-y-8 mt-10">
+
+          <div class="flex gap-5">
+
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-black font-bold flex items-center justify-center">
+              1
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-lg">
+                Cloud Foundations
+              </h4>
+
+              <p class="text-slate-400 mt-1">
+                Linux, Git, Networking & AWS Basics
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="flex gap-5">
+
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-black font-bold flex items-center justify-center">
+              2
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-lg">
+                Containers & CI/CD
+              </h4>
+
+              <p class="text-slate-400 mt-1">
+                Docker, Kubernetes & Jenkins Pipelines
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="flex gap-5">
+
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-black font-bold flex items-center justify-center">
+              3
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-lg">
+                Real-Time Projects
+              </h4>
+
+              <p class="text-slate-400 mt-1">
+                Terraform, Monitoring & Production Deployments
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- DATA -->
+      <div class="premium-card glass rounded-[36px] p-10">
+
+        <div class="flex items-center justify-between">
+
+          <div>
+
+            <h3 class="text-3xl font-extrabold">
+              Data Analytics
+            </h3>
+
+            <p class="text-slate-400 mt-3">
+              Become a business intelligence expert.
+            </p>
+
+          </div>
+
+          <div class="w-20 h-20 rounded-3xl bg-emerald-400/10 flex items-center justify-center">
+
+            <i data-lucide="bar-chart-4" class="text-emerald-400 w-8 h-8"></i>
+
+          </div>
+
+        </div>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+
+          <span class="tag">SQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Excel</span>
+          <span class="tag">ETL</span>
+          <span class="tag">Data Modeling</span>
+
+        </div>
+
+        <div class="space-y-8 mt-10">
+
+          <div class="flex gap-5">
+
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-black font-bold flex items-center justify-center">
+              1
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-lg">
+                SQL & Data Cleaning
+              </h4>
+
+              <p class="text-slate-400 mt-1">
+                Advanced Queries & Data Transformation
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="flex gap-5">
+
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-black font-bold flex items-center justify-center">
+              2
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-lg">
+                Visualization
+              </h4>
+
+              <p class="text-slate-400 mt-1">
+                Tableau & Power BI Dashboards
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="flex gap-5">
+
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-black font-bold flex items-center justify-center">
+              3
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-lg">
+                Business Projects
+              </h4>
+
+              <p class="text-slate-400 mt-1">
+                ETL Pipelines & Analytics Case Studies
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TECHNOLOGIES -->
+<section id="technologies" class="py-28 bg-[#040816]">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-20">
+
+      <h2 class="section-title text-5xl md:text-6xl font-extrabold">
+
+        Technologies You Will
+        <span class="gradient-text">Master</span>
+
+      </h2>
+
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- AWS -->
+      <div class="premium-card glass rounded-[32px] p-8">
+
+        <div class="w-20 h-20 rounded-3xl bg-orange-400/10 flex items-center justify-center">
+          <i data-lucide="cloud" class="text-orange-400 w-10 h-10"></i>
+        </div>
+
+        <h3 class="text-3xl font-bold mt-8">
+          AWS Cloud
+        </h3>
+
+        <p class="text-slate-400 mt-5 leading-relaxed">
+
+          EC2, IAM, S3, VPC, Route53, Load Balancer,
+          Lambda, Auto Scaling & real-time cloud deployments.
+
+        </p>
+
+      </div>
+
+      <!-- DEVOPS -->
+      <div class="premium-card glass rounded-[32px] p-8">
+
+        <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 flex items-center justify-center">
+          <i data-lucide="server-cog" class="text-cyan-400 w-10 h-10"></i>
+        </div>
+
+        <h3 class="text-3xl font-bold mt-8">
+          DevOps Tools
+        </h3>
+
+        <p class="text-slate-400 mt-5 leading-relaxed">
+
+          Docker, Kubernetes, Terraform, Jenkins,
+          GitHub Actions, SonarQube, Monitoring & CI/CD Pipelines.
+
+        </p>
+
+      </div>
+
+      <!-- DATA -->
+      <div class="premium-card glass rounded-[32px] p-8">
+
+        <div class="w-20 h-20 rounded-3xl bg-emerald-400/10 flex items-center justify-center">
+          <i data-lucide="database" class="text-emerald-400 w-10 h-10"></i>
+        </div>
+
+        <h3 class="text-3xl font-bold mt-8">
+          Data Analytics
+        </h3>
+
+        <p class="text-slate-400 mt-5 leading-relaxed">
+
+          SQL, Power BI, Tableau, Excel,
+          KPI Dashboards, ETL Pipelines & Business Intelligence.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SUCCESS STORIES -->
+<section id="success" class="py-28 bg-[#07101d]">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-20">
+
+      <h2 class="section-title text-5xl md:text-6xl font-extrabold">
+
+        Success
+        <span class="gradient-text">Stories</span>
+
+      </h2>
+
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- CARD -->
+      <div class="premium-card glass rounded-[32px] p-8">
+
+        <div class="flex items-center gap-4">
+
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-cyan-400 to-emerald-400 flex items-center justify-center text-black font-bold text-xl">
+            R
+          </div>
+
+          <div>
+
+            <h3 class="text-2xl font-bold">
+              Rahul Sharma
+            </h3>
+
+            <p class="text-cyan-400 text-sm mt-1">
+              Support Engineer → DevOps Engineer
+            </p>
+
+          </div>
+
+        </div>
+
+        <p class="text-slate-400 mt-8 leading-relaxed">
+
+          “The Kubernetes and Terraform projects helped me crack multiple interviews and get placed at Deloitte.”
+
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mt-8">
+
+          <div class="glass rounded-2xl p-4 text-center">
+
+            <p class="text-slate-400 text-sm">
+              Before
+            </p>
+
+            <h4 class="text-xl font-bold mt-2">
+              ₹3.2 LPA
+            </h4>
+
+          </div>
+
+          <div class="glass rounded-2xl p-4 text-center">
+
+            <p class="text-slate-400 text-sm">
+              After
+            </p>
+
+            <h4 class="text-xl font-bold text-emerald-400 mt-2">
+              ₹8.5 LPA
+            </h4>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="premium-card glass rounded-[32px] p-8">
+
+        <div class="flex items-center gap-4">
+
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-cyan-400 to-emerald-400 flex items-center justify-center text-black font-bold text-xl">
+            S
+          </div>
+
+          <div>
+
+            <h3 class="text-2xl font-bold">
+              Sneha Patel
+            </h3>
+
+            <p class="text-emerald-400 text-sm mt-1">
+              Fresher → Data Analyst
+            </p>
+
+          </div>
+
+        </div>
+
+        <p class="text-slate-400 mt-8 leading-relaxed">
+
+          “Power BI dashboards and SQL projects helped me land my first analytics role confidently.”
+
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mt-8">
+
+          <div class="glass rounded-2xl p-4 text-center">
+
+            <p class="text-slate-400 text-sm">
+              Before
+            </p>
+
+            <h4 class="text-xl font-bold mt-2">
+              Unplaced
+            </h4>
+
+          </div>
+
+          <div class="glass rounded-2xl p-4 text-center">
+
+            <p class="text-slate-400 text-sm">
+              After
+            </p>
+
+            <h4 class="text-xl font-bold text-emerald-400 mt-2">
+              ₹6.2 LPA
+            </h4>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="premium-card glass rounded-[32px] p-8">
+
+        <div class="flex items-center gap-4">
+
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-cyan-400 to-emerald-400 flex items-center justify-center text-black font-bold text-xl">
+            A
+          </div>
+
+          <div>
+
+            <h3 class="text-2xl font-bold">
+              Aman Verma
+            </h3>
+
+            <p class="text-cyan-400 text-sm mt-1">
+              System Admin → Cloud Architect
+            </p>
+
+          </div>
+
+        </div>
+
+        <p class="text-slate-400 mt-8 leading-relaxed">
+
+          “Weekend architecture sessions and AWS projects helped me transition into cloud engineering.”
+
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mt-8">
+
+          <div class="glass rounded-2xl p-4 text-center">
+
+            <p class="text-slate-400 text-sm">
+              Before
+            </p>
+
+            <h4 class="text-xl font-bold mt-2">
+              ₹5.5 LPA
+            </h4>
+
+          </div>
+
+          <div class="glass rounded-2xl p-4 text-center">
+
+            <p class="text-slate-400 text-sm">
+              After
+            </p>
+
+            <h4 class="text-xl font-bold text-emerald-400 mt-2">
+              ₹14 LPA
+            </h4>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-28 bg-[#040816]">
+
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="premium-card glass rounded-[40px] p-12 text-center">
+
+      <div class="w-24 h-24 mx-auto rounded-[28px] bg-gradient-to-r from-cyan-400 to-emerald-400 flex items-center justify-center">
+
+        <i data-lucide="rocket" class="text-black w-10 h-10"></i>
+
+      </div>
+
+      <h2 class="text-5xl font-extrabold mt-10">
+
+        Start Your
+        <span class="gradient-text">Tech Career Journey</span>
+
+      </h2>
+
+      <p class="text-slate-400 text-lg mt-6 max-w-2xl mx-auto">
+
+        Book your free counseling session and get your personalized learning roadmap.
+
+      </p>
+
+      <!-- FORM -->
+      <form class="grid md:grid-cols-2 gap-5 mt-12">
+
+        <input type="text" placeholder="Full Name" class="input">
+        <input type="email" placeholder="Email Address" class="input">
+        <input type="tel" placeholder="Phone Number" class="input">
+
+        <select class="input">
+          <option>Student</option>
+          <option>Working Professional</option>
+        </select>
+
+        <select class="input md:col-span-2">
+          <option>Multi-Cloud DevOps</option>
+          <option>Data Analytics</option>
+        </select>
+
+        <button
+          class="md:col-span-2 bg-gradient-to-r from-cyan-400 to-emerald-400 text-black py-5 rounded-2xl font-extrabold text-lg hover:scale-[1.02] transition">
+
+          Book Free Career Counseling Session
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-8 bg-[#040816]">
+
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+
+    <div class="text-slate-500 text-sm">
+      © 2026 DMV Technologies. All Rights Reserved.
+    </div>
+
+    <div class="flex gap-6 text-sm text-slate-500">
+
+      <a href="#" class="hover:text-cyan-400 transition">
+        Privacy
+      </a>
+
+      <a href="#" class="hover:text-cyan-400 transition">
+        Terms
+      </a>
+
+      <a href="#" class="hover:text-cyan-400 transition">
+        Support
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+  lucide.createIcons();
+</script>
+
+</body>
+</html>
